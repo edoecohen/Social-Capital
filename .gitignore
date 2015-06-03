@@ -1,5 +1,5 @@
 node_modules
-server/auth/AuthConfig.js
+
 server/external/twitterAPIcredentials.txt
 bower_components
 data/db/**
