@@ -2,7 +2,7 @@ var User = require('../users/userModel.js');
 var TwitterStrategy = require('passport-twitter').Strategy;
 
 // API keys configuration file
-var config = require('./AuthConfig');
+var config = require('./AuthConfig.js');
 
 var authenticated = function (req) {
   return req.session && req.session.passport && req.session.passport.user;
