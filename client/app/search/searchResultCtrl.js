@@ -1,6 +1,13 @@
 angular.module('socialStock')
 
 .controller('SearchResultCtrl', function($scope, $http, $location, clientFactory) {
+
+  $scope.labels = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10', 'Day 11', 'Day 12', 'Day 13', 'Day 14'];
+  $scope.series = ['Series A - User Growth'];
+  $scope.data = [];
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
   
   var getGrowth = function(){
     return $http({
@@ -8,21 +15,23 @@ angular.module('socialStock')
                   url: '/getgrowth',
               })
               .then(function(resp) {
-                console.log('twitter counter', resp);
-                  return resp;
+                var result = [];
+                var followers = resp.data.followersperdate;
+                
+                for(var key in followers){
+                  result.unshift(followers[key]);
+                }
+
+                $scope.data.push(result);
+
+                console.log('the results', result);
+                
+                console.log('twitter counter', resp.data.followersperdate);
+                return resp.data.followersperdate;
               });
   }
   getGrowth();
 
-
-  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-  $scope.series = ['Series A'];
-  $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40]
-  ];
-  $scope.onClick = function (points, evt) {
-    console.log(points, evt);
-  };
 
   $scope.obj = {};
 

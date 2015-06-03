@@ -1,7 +1,6 @@
 angular.module('socialStock')
 
 .controller('DashCtrl', function($scope, $http, clientFactory, d3Factory) {
-  console.log("inside DashCtrl!");
   $scope.name = 'Yo yo yo';
 
   $scope.obj = {};

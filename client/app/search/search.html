@@ -1,0 +1,32 @@
+<div id='info'>
+  <div class='networth'>NET WORTH <span class='rightfloat'>{{ networth | number:2 }}</span></div>
+  <div id='cash'>CASH BALANCE <span class='rightfloat' ng-class="{ red: portfolio.cash_balance < 0 }">{{portfolio.cash_balance | number:2}}</span></div>
+</div>
+<div id='search'>
+  <form ng-submit='search(searchTerm)'>
+    <!-- <button ng-click='search(searchTerm)'>search</button> -->
+    <input type='text' ng-model='searchTerm' placeholder='Input Twitter Handle'>
+  </form>
+</div>
+<div id='searchheaders'>
+  <div class='center twentyfivepercent'>STOCK</div>
+  <div class='center twentyfivepercent'>FOLLOWERS</div>
+  <div class='center twentyfivepercent'>SHARE PRICE</div>
+  <div class='center twentyfivepercent'>BUY</div>
+</div>
+<div id='stocks'>
+  <div class='stock parent search' ng-repeat='stock in stocks'>
+    <div class='gray twentyfivepercent center'>
+      <div>{{ stock.name }}</div>
+      <div class='handle'>@{{ stock.screen_name }}</div>
+    </div>
+    <div class='gray twentyfivepercent center'>{{ stock.follower_count_at_query_time | number}}</div>
+    <div class='gray twentyfivepercent center'>{{ stock.price_at_purchase | number:2}}</div>
+    <div class='gray twentyfivepercent buy center'>
+      <form ng-submit='buyStock(shareCount)'>
+        <!-- <button ng-click='buyStock(shareCount)'>BUY</button> -->
+        <input type='text' ng-model='shareCount' placeholder='shares'>
+      </form>
+    </div>
+  </div>
+</div>

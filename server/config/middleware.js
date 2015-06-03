@@ -39,7 +39,7 @@ module.exports = function(app, express){
     request('http://api.twittercounter.com/?apikey=2dc2e68f8a5190a63b2d4c8f4d8a53d8&twitter_id=17503180&output=JSONP', function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log(body) // Show the HTML for the Google homepage. 
-        res.json(body);
+        res.send(body);
       }
     })
   });
